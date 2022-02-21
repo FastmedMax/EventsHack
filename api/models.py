@@ -19,3 +19,17 @@ class Case(models.Model):
     banner = models.ImageField(verbose_name="Баннер")
     year = models.CharField(verbose_name="Год", max_length=10)
     type = models.CharField(verbose_name="Тип", choices=Type.choices)
+
+
+class Review(models.Model):
+    case = models.ForeignKey(
+        Case,
+        verbose_name="Кейс",
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="reviews"
+        )
+    photo = models.ImageField(verbose_name="Фото")
+    name = models.CharField(verbose_name="Имя рецензиста", max_length=30)
+    member_name = models.CharField(verbose_name="Роль", max_length=30)
+    text = models.TextField(verbose_name="Описание")
