@@ -46,3 +46,9 @@ class CasePhoto(models.Model):
     photo = models.ImageField(verbose_name="Фото")
     caption = models.CharField(verbose_name="Подпись", max_length=30)
 
+
+class Callback(models.Model):
+    name = models.CharField(verbose_name="Имя ", max_length=30)
+    email = models.EmailField(verbose_name="Почта")
+    phone = models.CharField(verbose_name="Номер телефона", max_length=30)
+    question = models.CharField(verbose_name="Вопрос", max_length=30)
