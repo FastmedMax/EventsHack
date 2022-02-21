@@ -1,4 +1,5 @@
 import os
+from os.path import join
 from pathlib import Path
 
 # Application definition
@@ -60,6 +61,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
+STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
+STATICFILES_DIRS = []
+STATIC_URL = '/static/'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+# Media files
+MEDIA_ROOT = join(os.path.dirname(BASE_DIR), 'media')
+MEDIA_URL = '/media/'
 
 TEMPLATES = [
     {
