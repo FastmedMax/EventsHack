@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Case(models.Model):
     class Type(models.Choices):
-        Hackathon = "Hackathon"
+        HACKATHON = "Hackathon"
         PRESENTATION = "Presentation"
         WEBSITE = "Website"
         WEBINAR = "Webinar"
@@ -30,8 +30,8 @@ class Review(models.Model):
         related_name="reviews"
         )
     photo = models.ImageField(verbose_name="Фото")
-    name = models.CharField(verbose_name="Имя рецензиста", max_length=30)
-    member_name = models.CharField(verbose_name="Роль", max_length=30)
+    name = models.CharField(verbose_name="Имя", max_length=30)
+    member_name = models.CharField(verbose_name="Наименование участника", max_length=30)
     text = models.TextField(verbose_name="Описание")
 
 
