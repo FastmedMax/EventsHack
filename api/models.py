@@ -33,3 +33,16 @@ class Review(models.Model):
     name = models.CharField(verbose_name="Имя рецензиста", max_length=30)
     member_name = models.CharField(verbose_name="Роль", max_length=30)
     text = models.TextField(verbose_name="Описание")
+
+
+class CasePhoto(models.Model):
+    case = models.ForeignKey(
+        Case,
+        verbose_name="Кейс",
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="photos"
+        )
+    photo = models.ImageField(verbose_name="Фото")
+    caption = models.CharField(verbose_name="Подпись", max_length=30)
+
