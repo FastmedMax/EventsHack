@@ -3,14 +3,14 @@ from django.db import models
 # Create your models here.
 class Case(models.Model):
     class Type(models.Choices):
-        HACKATHON = "Hackathon"
-        PRESENTATION = "Presentation"
-        WEBSITE = "Website"
-        WEBINAR = "Webinar"
-        CORPORATE = "Corporate"
-        CONFERENCE = "Conference"
-        STREAM = "Stream"
-        FREE_FORMAT = "Free_format"
+        HACKATHON = "Hackathon", "Хакатон"
+        PRESENTATION = "Presentation", "Презентация"
+        WEBSITE = "Website", "Сайт"
+        WEBINAR = "Webinar", "Вебинар"
+        CORPORATE = "Corporate", "Корпоратив"
+        CONFERENCE = "Conference", "Конференция"
+        STREAM = "Stream", "Трансляция"
+        FREE_FORMAT = "Free_format", "Свободный формат"
 
     title = models.CharField(verbose_name="Название", max_length=30)
     objective = models.CharField(verbose_name="Цель", max_length=30)
