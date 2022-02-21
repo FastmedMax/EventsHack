@@ -13,6 +13,9 @@ INSTALLED_APPS = [
     
     # Third party apps
     "rest_framework",
+    
+    # Local apps
+    "api",
 ]
 
 MIDDLEWARE = [
