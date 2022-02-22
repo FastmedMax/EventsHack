@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Case(models.Model):
-    class Type(models.Choices):
+    class Type(models.TextChoices):
         HACKATHON = "Hackathon", "Хакатон"
         PRESENTATION = "Presentation", "Презентация"
         WEBSITE = "Website", "Сайт"
@@ -18,7 +18,7 @@ class Case(models.Model):
     result = models.CharField(verbose_name="Итог", max_length=50)
     banner = models.ImageField(verbose_name="Баннер")
     year = models.CharField(verbose_name="Год", max_length=10)
-    type = models.CharField(verbose_name="Тип", choices=Type.choices)
+    type = models.CharField(verbose_name="Тип", choices=Type.choices, max_length=30)
 
 
 class Review(models.Model):
