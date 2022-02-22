@@ -73,3 +73,16 @@ class EventListView(ListAPIView):
             return Response("События не найдены!", status=status.HTTP_404_NOT_FOUND)
         serializer = self.serializer_class(event)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CallBackView(APIView):
+    queryset = Callback
+    serializer_class = CallBackSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
