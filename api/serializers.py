@@ -19,3 +19,9 @@ class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Case
         fields = ("id","title","objective","banner")
+
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = "__all__"
