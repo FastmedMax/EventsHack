@@ -20,6 +20,7 @@ class Case(models.Model):
     banner = models.ImageField(verbose_name="Баннер", blank=True)
     year = models.CharField(verbose_name="Год", max_length=10)
     type = models.CharField(verbose_name="Тип", choices=Type.choices, max_length=30)
+    is_best = models.BooleanField(verbose_name="Лучший", default=False)
 
 
 class Review(models.Model):
