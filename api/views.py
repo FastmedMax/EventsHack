@@ -47,3 +47,16 @@ class CaseListBestView(ListAPIView):
             return Response("Кейсы не найден!", status=status.HTTP_404_NOT_FOUND)
         serializer = self.serializer_class(cases, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CaseFullView(APIView):
+    queryset = Case
+    serializer_class = CaseFullSerializer
+
+    def get(self, request, id):
+        try:
+            case = self.queryset.objects.get(id=id)
+        except Case.DoesNotExist:
+            return Response("Кейс не найден!", status=status.HTTP_404_NOT_FOUND)
+        serializer = self.serializer_class(case)
+        return Response(serializer.data, status=status.HTTP_200_OK)
