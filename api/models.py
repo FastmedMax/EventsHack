@@ -16,7 +16,7 @@ class Case(models.Model):
     objective = models.CharField(verbose_name="Цель", max_length=30)
     tasks = models.CharField(verbose_name="Задачи", max_length=100)
     result = models.CharField(verbose_name="Итог", max_length=50)
-    banner = models.ImageField(verbose_name="Баннер")
+    banner = models.ImageField(verbose_name="Баннер", blank=True)
     year = models.CharField(verbose_name="Год", max_length=10)
     type = models.CharField(verbose_name="Тип", choices=Type.choices, max_length=30)
 
@@ -29,9 +29,9 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         related_name="reviews"
         )
-    photo = models.ImageField(verbose_name="Фото")
+    photo = models.ImageField(verbose_name="Фото", blank=True)
     name = models.CharField(verbose_name="Имя", max_length=30)
-    member_name = models.CharField(verbose_name="Наименование участника", max_length=30)
+    member_name = models.CharField(verbose_name="Наименование участника", max_length=30, blank=True)
     text = models.TextField(verbose_name="Описание")
 
 
