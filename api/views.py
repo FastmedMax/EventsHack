@@ -60,3 +60,16 @@ class CaseFullView(APIView):
             return Response("Кейс не найден!", status=status.HTTP_404_NOT_FOUND)
         serializer = self.serializer_class(case)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class EventListView(ListAPIView):
+    queryset = Event
+    serializer_class = EventSerializer
+
+    def get(self, request, id, *args, **kwargs):
+        try:
+            event = self.queryset.objects.get(id=id)
+        except Event.DoesNotExist:
+            return Response("События не найдены!", status=status.HTTP_404_NOT_FOUND)
+        serializer = self.serializer_class(event)
+        return Response(serializer.data, status=status.HTTP_200_OK)
