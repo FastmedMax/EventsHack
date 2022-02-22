@@ -7,3 +7,9 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = "__all__"
+
+
+class CaseFullSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Case
+        fields = "__all__"
