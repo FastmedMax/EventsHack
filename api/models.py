@@ -1,3 +1,4 @@
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 
 # Create your models here.
@@ -45,6 +46,24 @@ class CasePhoto(models.Model):
         )
     photo = models.ImageField(verbose_name="Фото")
     caption = models.CharField(verbose_name="Подпись", max_length=30)
+
+
+class Event(models.Model):
+    class Type(models.TextChoices):
+        HACKATHON = "Hackathon", "Хакатон"
+        PRESENTATION = "Presentation", "Презентация"
+        WEBSITE = "Website", "Сайт"
+        WEBINAR = "Webinar", "Вебинар"
+        CORPORATE = "Corporate", "Корпоратив"
+        CONFERENCE = "Conference", "Конференция"
+        STREAM = "Stream", "Трансляция"
+        FREE_FORMAT = "Free_format", "Свободный формат"
+
+    title = models.CharField(verbose_name="Название", choices=Type.choices, max_length=30)
+    description = models.TextField(verbose_name="Описание события")
+    questions = ArrayField(
+        models.TextField(verbose_name="Вопросы")
+    )
 
 
 class Callback(models.Model):
