@@ -25,3 +25,9 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = "__all__"
+
+
+class CallBackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Callback
+        fields = "__all__"
