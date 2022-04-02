@@ -32,9 +32,10 @@ MIDDLEWARE = [
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
 
 
 # Database
@@ -64,7 +65,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
+STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = []
 STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
@@ -73,7 +74,7 @@ STATICFILES_FINDERS = (
 )
 
 # Media files
-MEDIA_ROOT = join(os.path.dirname(BASE_DIR), 'media')
+MEDIA_ROOT = BASE_DIR / 'media/'
 MEDIA_URL = '/media/'
 
 TEMPLATES = [
