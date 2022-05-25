@@ -48,6 +48,10 @@ class CasePhoto(models.Model):
     photo = models.ImageField(verbose_name="Фото")
     caption = models.CharField(verbose_name="Подпись", max_length=30)
 
+    @property
+    def photo_url(self):
+        return self.photo.url
+
 
 class Event(models.Model):
     class Type(models.TextChoices):
