@@ -10,6 +10,9 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class CaseFullSerializer(serializers.ModelSerializer):
+    photos = serializers.SlugRelatedField(
+        slug_field="photo_url", read_only=True, many=True
+    )
     class Meta:
         model = Case
         fields = "__all__"
